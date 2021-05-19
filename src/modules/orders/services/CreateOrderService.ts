@@ -4,7 +4,7 @@ import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import Order from '../typeorm/entities/Order';
 import OrdersRepository from '../typeorm/repositories/OrdersRepository';
-import RedisCache from '@shared/cache/RedisCache';
+import redisCache from '@shared/cache/RedisCache';
 
 interface IProduct {
   id: string;
@@ -81,7 +81,6 @@ class CreateOrderService {
 
     await productsRepository.save(updatedProductQuantity);
 
-    const redisCache = new RedisCache();
     await redisCache.invalidate('api-vendas-PRODUCT_LIST');
 
     return order;

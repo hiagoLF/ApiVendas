@@ -37,7 +37,7 @@ export default {
   },
   config: {
     aws: {
-      bucket: 'api-vendas',
+      bucket: 'api-vendas-hiagolf',
     },
   },
 } as IUploadConfig;
